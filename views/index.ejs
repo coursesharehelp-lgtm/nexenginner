@@ -223,24 +223,28 @@
   <div class="grid-border"></div>
 
 
+
+<!-- MOBILE MENU OVERLAY -->
+<div id="mobileOverlay"
+     class="fixed inset-0 bg-black/60 hidden z-40"></div>
+
 <!-- MOBILE MENU PANEL -->
 <div id="mobilePanel"
-     class="hidden fixed top-20 left-4 right-4 bg-black/90 backdrop-blur-xl border border-white/10 rounded-2xl p-6 flex flex-col gap-4 z-50">
+     class="fixed top-0 right-0 h-full w-72 bg-black/95 border-l border-white/10
+            transform translate-x-full transition-transform duration-300 z-50
+            flex flex-col p-6 gap-5">
+
+  <h2 class="text-xl font-bold mb-4">Menu</h2>
 
   <a href="#" class="hover:text-violet-400">Home</a>
   <a href="#" class="hover:text-violet-400">Features</a>
   <a href="#" class="hover:text-violet-400">Certificates</a>
   <a href="#" class="hover:text-violet-400">Contact</a>
 
-  <hr class="border-white/10">
+  <hr class="border-white/10 my-4">
 
-  <a href="#" class="px-4 py-2 border border-white/10 rounded-xl text-center">
-    Login
-  </a>
-
-  <a href="#" class="px-4 py-2 rounded-xl btn-primary text-center font-semibold">
-    Join Free
-  </a>
+  <a href="#" class="px-4 py-2 border border-white/10 rounded-xl text-center">Login</a>
+  <a href="#" class="px-4 py-2 rounded-xl btn-primary text-center font-semibold">Join Free</a>
 </div>
   <!-- NAVBAR -->
 
@@ -313,10 +317,9 @@
 
       <!-- MOBILE -->
 
-      <button class="mobile-menu text-3xl">
-        <i class="bi bi-list"></i>
-      </button>
-
+    <button id="menuBtn" class="mobile-menu text-3xl">
+  <i class="bi bi-list"></i>
+</button>
     </div>
 
   </nav>
@@ -1016,19 +1019,30 @@
 </body>
 <!-- JS -->
 <script>
+document.addEventListener("DOMContentLoaded", () => {
+
   const menuBtn = document.getElementById("menuBtn");
   const mobilePanel = document.getElementById("mobilePanel");
+  const overlay = document.getElementById("mobileOverlay");
 
-  menuBtn.addEventListener("click", () => {
-    mobilePanel.classList.toggle("hidden");
+  function openMenu() {
+    mobilePanel.classList.remove("translate-x-full");
+    overlay.classList.remove("hidden");
+  }
+
+  function closeMenu() {
+    mobilePanel.classList.add("translate-x-full");
+    overlay.classList.add("hidden");
+  }
+
+  menuBtn.addEventListener("click", openMenu);
+  overlay.addEventListener("click", closeMenu);
+
+  document.querySelectorAll("#mobilePanel a").forEach(a => {
+    a.addEventListener("click", closeMenu);
   });
 
-  // close on click
-  mobilePanel.querySelectorAll("a").forEach(a => {
-    a.addEventListener("click", () => {
-      mobilePanel.classList.add("hidden");
-    });
-  });
+});
 </script>
 
 </html>
