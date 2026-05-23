@@ -97,24 +97,30 @@
         #050816;
     }
 
-    .blob {
-      position: absolute;
-      border-radius: 9999px;
-      filter: blur(100px);
-      opacity: .2;
-      z-index: 0;
-    }
-
     .grid-border {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-      background-size: 50px 50px;
-      mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
-    }
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
+  pointer-events: none;
+}
 
+.blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(100px);
+  opacity: .2;
+  z-index: 0;
+  pointer-events: none;
+}
+
+nav {
+  position: fixed;
+  z-index: 9999;
+}
     .btn-primary {
       background: linear-gradient(135deg, #7c3aed, #06b6d4);
     }
@@ -244,7 +250,7 @@
   <hr class="border-white/10 my-4">
 
   <a href="#" class="px-4 py-2 border border-white/10 rounded-xl text-center">Login</a>
-  <a href="#" class="px-4 py-2 rounded-xl btn-primary text-center font-semibold">Join Free</a>
+  <a href="/register" class="px-4 py-2 rounded-xl btn-primary text-center font-semibold">Join Free</a>
 </div>
   <!-- NAVBAR -->
 
@@ -308,7 +314,7 @@
           Login
         </a>
 
-        <a href="#"
+        <a href="/register"
           class="px-6 py-3 rounded-2xl btn-primary font-semibold transition">
           Join Free
         </a>

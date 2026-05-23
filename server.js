@@ -1,18 +1,29 @@
-const express=require('express');
-const env=require('dotenv');
-const app=express();
-app.use(express.static("public"));
+const express = require('express');
+const path = require('path');
+const session = require('express-session');
+
+const connectDB = require('./config/db');
+const authRoutes = require('./routes/main.routes');
+
+const app = express();
+
+connectDB();
+
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.set('view engine','ejs');
 
-const PORT=env.PORT||4000;
-app.listen(PORT,()=>{
-    console.log(`Server Run On PORT ${PORT}`)
+app.use(session({
+    secret: 'nexengineer_secret',
+    resave: false,
+    saveUninitialized: true
+}));
+
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.set('view engine', 'ejs');
+
+app.use('/', authRoutes);
+
+app.listen(5000, () => {
+    console.log("Server Running on 5000");
 });
-
-app.get('/',(req,res)=>{
-    res.render('index');
-});
-
-
-
