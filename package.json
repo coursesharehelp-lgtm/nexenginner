@@ -1,0 +1,27 @@
+{
+  "name": "nexenginner",
+  "version": "1.0.0",
+  "description": "a makauat students ",
+  "homepage": "https://github.com/MISTU293-art/nexenginner#readme",
+  "bugs": {
+    "url": "https://github.com/MISTU293-art/nexenginner/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MISTU293-art/nexenginner.git"
+  },
+  "license": "MIT",
+  "author": "mistu debnath",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "ejs": "^5.0.2",
+    "express": "^5.2.1",
+    "mongoose": "^9.6.2",
+    "nodemon": "^3.1.14"
+  }
+}
