@@ -222,6 +222,26 @@
 
   <div class="grid-border"></div>
 
+
+<!-- MOBILE MENU PANEL -->
+<div id="mobilePanel"
+     class="hidden fixed top-20 left-4 right-4 bg-black/90 backdrop-blur-xl border border-white/10 rounded-2xl p-6 flex flex-col gap-4 z-50">
+
+  <a href="#" class="hover:text-violet-400">Home</a>
+  <a href="#" class="hover:text-violet-400">Features</a>
+  <a href="#" class="hover:text-violet-400">Certificates</a>
+  <a href="#" class="hover:text-violet-400">Contact</a>
+
+  <hr class="border-white/10">
+
+  <a href="#" class="px-4 py-2 border border-white/10 rounded-xl text-center">
+    Login
+  </a>
+
+  <a href="#" class="px-4 py-2 rounded-xl btn-primary text-center font-semibold">
+    Join Free
+  </a>
+</div>
   <!-- NAVBAR -->
 
   <nav
@@ -356,7 +376,7 @@
 
             </a>
 
-            <a href="#"
+            <a href="https://drive.google.com/file/d/18N_lcUqQ6BA-M9Ax9G2_f-I0AGyrL1H4/view?usp=sharing"
               class="px-8 py-4 rounded-2xl border border-white/10 hover:bg-white/5 transition text-center">
 
               Free Resources
@@ -1000,13 +1020,13 @@
   const mobilePanel = document.getElementById("mobilePanel");
 
   menuBtn.addEventListener("click", () => {
-    mobilePanel.classList.toggle("show");
+    mobilePanel.classList.toggle("hidden");
   });
 
-  // close menu on click
-  document.querySelectorAll("#mobilePanel a").forEach(a => {
+  // close on click
+  mobilePanel.querySelectorAll("a").forEach(a => {
     a.addEventListener("click", () => {
-      mobilePanel.classList.remove("show");
+      mobilePanel.classList.add("hidden");
     });
   });
 </script>
